@@ -19,6 +19,8 @@ export class SupabaseAdapter {
         return this.fetchRegion(id) as any
       } else if (cleanPath === 'collections') {
         return this.fetchCollections(query) as any
+      } else if (cleanPath === 'product-categories') {
+        return this.fetchCategories(query) as any
       } else if (cleanPath.startsWith('products/')) {
         const id = cleanPath.split('/')[1]
         return this.fetchProduct(id) as any
@@ -166,6 +168,16 @@ export class SupabaseAdapter {
     if (error) throw error
     
     return { collections: collections || [] }
+  }
+  
+  private async fetchCategories(query: any) {
+    const { data: categories, error } = await supabase
+      .from('product_categories')
+      .select('*')
+    
+    if (error) throw error
+    
+    return { product_categories: categories || [] }
   }
   
   private async handleCarts(path: string, method: string, options: any) {
