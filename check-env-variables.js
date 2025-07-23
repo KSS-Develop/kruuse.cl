@@ -1,11 +1,16 @@
 const c = require("ansi-colors")
 
 const requiredEnvs = [
+  // For Supabase integration, we check for Supabase credentials instead
   {
-    key: "NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY",
-    // TODO: we need a good doc to point this to
+    key: "NEXT_PUBLIC_SUPABASE_URL",
     description:
-      "Learn how to create a publishable key: https://docs.medusajs.com/v2/resources/storefront-development/publishable-api-keys",
+      "Your Supabase project URL. Get it from: https://supabase.com/dashboard/project/_/settings/api",
+  },
+  {
+    key: "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+    description:
+      "Your Supabase anonymous key. Get it from: https://supabase.com/dashboard/project/_/settings/api",
   },
 ]
 
